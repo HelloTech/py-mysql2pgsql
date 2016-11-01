@@ -106,7 +106,8 @@ class PostgresDbWriter(PostgresWriter):
             if many:
                 cur.executemany(sql, args)
             else:
-                cur.execute(sql, args)
+                if sql != "":
+                    cur.execute(sql, args)
             self.conn.commit()
 
     def copy_from(self, file_obj, table_name, columns):
