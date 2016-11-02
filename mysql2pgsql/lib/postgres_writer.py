@@ -76,7 +76,7 @@ class PostgresWriter(object):
             elif column['type'] == 'datetime':
                 default = None
                 if self.tz:
-                    return default, 'timestamp with time zone'
+                    return default, 'timestamptz'
                 else:
                     return default, 'timestamp without time zone'
             elif column['type'] == 'date':
@@ -95,7 +95,7 @@ class PostgresWriter(object):
                     else:
                         default = " DEFAULT '1970-01-01 00:00'"
                 if self.tz:
-                    return default, 'timestamp with time zone'
+                    return default, 'timestamptz'
                 else:
                     return default, 'timestamp without time zone'
             elif column['type'] == 'time':
